@@ -8,14 +8,33 @@ export default class CartItem extends PureComponent {
 
         //TODO: assing from props
         this.state = {
-            qty: 0
+            qty: this.props.item.qty
         }
     }
 
     //TODO: Ref
     //TODO: componentWillMount
     //TODO: state from props, qty
+
+
+    updateQty = (e) => {
+        let value = e.target.value;
+
+        this.setState({
+            qty: value
+        });
+    }
    
+
+    componentWillUnmount() {
+
+        console.log("CartItme will unmount",this.props.item);
+    }
+
+    componentDidMount(){
+        this.inputElem.focus();
+    }
+
     render() {
         let {item} = this.props;
 
@@ -23,13 +42,15 @@ export default class CartItem extends PureComponent {
 
         return (
             <tr>
-                <td>{item.name} - {this.context.theme}</td>
+                <td>{item.name} </td>
                 <td>{item.price}</td>
                 <td>
                      <input 
-                            value={item.qty}
+                            value={this.state.qty}
                             type="number"
-                     />
+                            onChange={this.updateQty} 
+                            ref={(elem) => this.inputElem = elem} 
+                            />
                 </td>
                 <td>{item.price * item.qty}</td>
                 <td> 

@@ -12,7 +12,7 @@ export default class Cart extends Component {
 
         this.state = {
             items: [ 
-            			{id: 1, name: 'P1', price: 100, qty: 1}
+            			{id: 1, name: 'P1', price: 100, qty: 5}
             	   ],
             amount: 0, // sum of all items price * qty
             count: 0, // sum of all items qty
@@ -30,20 +30,63 @@ export default class Cart extends Component {
         }
 
         //TODO:
- 
+        //BAD 
+        //let items = this.state.items;
+        //items.push(item); //BAD, mutating array
+
+        //GOOD
+        let items =[...this.state.items,item]
+
+        this.setState({
+            //items: items
+            items //es6 sugar
+        })
+        
+        this.recalculate(items);
     }
     
     removeItem = (id) => {
         //TODO
+        let items = this.state
+                            .items
+                            .filter(item => item.id !=id);
+        
+        this.setState({
+            items
+        });
+
+        this.recalculate(items);
     }
 
     updateItem = (id, qty) => {
         //TODO
+        
+        
+        let items = this.state.items.map(item => {
+                        if(item.id == id){
+                            //BAD, mutating item Object
+                            //item.qty = parseInt(qty)
+
+                            return {...item, qty: parseInt(qty) }
+                        }
+                        return item });
+        
+        
+
+        this.setState({
+            items
+        });
+
+        this.recalculate(items);
     }
 
     empty = () => {
         //TODO
-         
+         this.setState({
+             items:[]
+         });
+
+         this.recalculate([]);
     }
 
     //dummy
@@ -72,6 +115,10 @@ export default class Cart extends Component {
     //TODO:
     //componentWillMount
     
+    componentWillMount(){
+        console.log("Cart will mount");
+        this.recalculate(this.state.items);
+    }
     
     render() {
         console.log("Cart render")
@@ -95,6 +142,7 @@ export default class Cart extends Component {
 
             <CartList  items={this.state.items}  
                        removeItem={this.removeItem}
+                       updateItem={this.updateItem}
             />
 
             <CartSummary amount={this.state.amount}
