@@ -61,7 +61,9 @@ export default class Header extends React.Component{
                 <h2> { this.props.title }  </h2>
                 <NavLink to="/" className="button" exact activeClassName="success"> Home </NavLink>
                 <NavLink to="/cart" className="button" activeClassName="success" > Cart  [{items.length}]</NavLink>
+                <NavLink to="/redux-cart" className="button" activeClassName="success" > Redux Cart  [{items.length}]</NavLink>
                 <NavLink to="/about" className="button" activeClassName="success" > About </NavLink>
+                <NavLink to="/products" className="button" activeClassName="success" > Products </NavLink>
                 <NavLink to="/contact/india" className="button" activeClassName="success" > India </NavLink>
                 <NavLink to="/contact/USA" className="button" activeClassName="success" > USA </NavLink>
 

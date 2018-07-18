@@ -11,7 +11,7 @@ export default class CartItem extends Component {
         this.state = {
             qty: props.item.qty
         }
-    }
+    } 
  
     componentWillReceiveProps(nextProps) {
         this.setState({

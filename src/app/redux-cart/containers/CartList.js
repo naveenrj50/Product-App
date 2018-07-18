@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 
 import CartList from "../components/CartList";
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state){
     return {
-         items: state.items // (.items from combineReducer/store.js)
+
+        items: state.items
     }
 }
- 
 
-export default connect(mapStateToProps, 
-                       null) (CartList) 
+
+//create and return CartListCOntainer
+export default connect(mapStateToProps,null) (CartList)

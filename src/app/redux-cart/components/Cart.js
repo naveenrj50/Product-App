@@ -9,14 +9,14 @@ import CartSummary from "../containers/CartSummary";
 export default function Cart(props) { 
         return (
             <div> 
-            <h2>Cart</h2>
+            <h2>Cart {props.cartLength}</h2>
 
             <button onClick={ ()=> props.addItem()}>
               Add
             </button>
 
             {/* actions.empty is a bindactioncreator method */}
-            <button onClick={ ()=> props.actions.empty()}>
+            <button onClick={ ()=> props.empty()}>
               Empty
             </button>
  

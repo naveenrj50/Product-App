@@ -7,6 +7,8 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Cart from "./cart/components/Cart";
+import ReduxCart from "./redux-cart/containers/Cart";
+import ProductList from "./redux-cart/containers/ProductList";
 
 import "./App.css";
 
@@ -48,6 +50,8 @@ export default class App extends Component{
             <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/cart" component={Cart} />
+            <Route path="/redux-cart" component={ReduxCart} />
+            <Route path="/products" component={ProductList} />
             <Route path="/about" component={About} />
             <Route path="/contact/:country" component={Contact} />
             <Route path="*" component={NotFound} />
