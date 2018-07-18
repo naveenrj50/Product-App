@@ -7,5 +7,6 @@ export default function Contact(props) {
         <div>
             <h2> Contact Page  {props.match.params.country}</h2>
         </div>
+       
     )
 }
