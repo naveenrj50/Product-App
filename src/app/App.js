@@ -7,16 +7,35 @@ import Contact from "./components/Contact";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
 import Cart from "./cart/components/Cart";
-import ReduxCart from "./redux-cart/containers/Cart";
+
+//import ReduxCart from "./redux-cart/containers/Cart";
 import ProductList from "./redux-cart/containers/ProductList";
 
 import "./App.css";
+
+
+
 
 import {BrowserRouter as Router,
         Switch,
         Route
         } from 'react-router-dom';
 
+
+import Loadable from 'react-loadable';
+
+function Loading() {
+    return (
+        <div> 
+            Loading ...
+        </div>
+    )
+}
+
+const ReduxCart = Loadable({
+    loader: () => import('./redux-cart/containers/Cart'),
+    loading: Loading,
+  });
 
 
 // virtual dom
